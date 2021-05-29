@@ -58,7 +58,7 @@ public:
 	 * @param val		Item to put.
 	 * @return		true if data was accepted and integrated.
 	 */
-	void put(const matrix::Vector3f &val, const float dt)
+	inline void put(const matrix::Vector3f &val, const float dt)
 	{
 		if (dt > FLT_EPSILON && dt <= _reset_interval_min) {
 			_alpha += integrate(val, dt);
@@ -75,6 +75,7 @@ public:
 	 * @param reset_interval	New reset time interval for the integrator in microseconds.
 	 */
 	void set_reset_interval(uint32_t reset_interval_us) { _reset_interval_min = reset_interval_us * 1e-6f; }
+	float get_reset_interval() const { return _reset_interval_min; }
 
 	/**
 	 * Set required samples for reset. This won't reset the integrator.
@@ -84,12 +85,14 @@ public:
 	void set_reset_samples(uint8_t reset_samples) { _reset_samples_min = reset_samples; }
 	uint8_t get_reset_samples() const { return _reset_samples_min; }
 
+	uint8_t integrated_samples() const { return _integrated_samples; }
+
 	/**
 	 * Is the Integrator ready to reset?
 	 *
 	 * @return		true if integrator has sufficient data (minimum interval & samples satisfied) to reset.
 	 */
-	bool integral_ready() const { return (_integrated_samples >= _reset_samples_min) || (_integral_dt >= _reset_interval_min); }
+	inline bool integral_ready() const { return (_integrated_samples >= _reset_samples_min) || (_integral_dt >= _reset_interval_min); }
 
 	void reset()
 	{
@@ -119,7 +122,7 @@ public:
 
 protected:
 
-	matrix::Vector3f integrate(const matrix::Vector3f &val, const float dt)
+	inline matrix::Vector3f integrate(const matrix::Vector3f &val, const float dt)
 	{
 		// Use trapezoidal integration to calculate the delta integral
 		_integrated_samples++;
@@ -153,7 +156,7 @@ public:
 	 * @param val		Item to put.
 	 * @return		true if data was accepted and integrated.
 	 */
-	void put(const matrix::Vector3f &val, const float dt)
+	inline void put(const matrix::Vector3f &val, const float dt)
 	{
 		if (dt > FLT_EPSILON && dt <= _reset_interval_min) {
 			// Use trapezoidal integration to calculate the delta integral
