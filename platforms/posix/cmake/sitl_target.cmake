@@ -104,6 +104,7 @@ set(models
 	none
 	boat
 	cloudship
+	honeybee2
 	if750a
 	iris
 	iris_ctrlalloc
