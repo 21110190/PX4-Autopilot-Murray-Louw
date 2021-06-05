@@ -84,5 +84,3 @@ param set RTL_DESCEND_ALT 10.0
 param set RTL_RETURN_ALT 10.0
 
 set MIXER quad_x
-
-set PWM_OUT 1234
