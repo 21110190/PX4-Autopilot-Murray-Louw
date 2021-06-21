@@ -68,9 +68,9 @@ param set MPC_XY_P 0.95
 # param set MPC_XY_VEL_D_ACC 0.3633
 
 # old*g/0.2568
-param set MPC_XY_VEL_P_ACC 3.4369
-param set MPC_XY_VEL_I_ACC 0.7638
-param set MPC_XY_VEL_D_ACC 0.3819
+# param set MPC_XY_VEL_P_ACC 3.4369
+# param set MPC_XY_VEL_I_ACC 0.7638
+# param set MPC_XY_VEL_D_ACC 0.3819
 
 # old*g/hover_init = old*g/0.2363
 param set MPC_XY_VEL_P_ACC 3.7351
