@@ -272,6 +272,7 @@ mavlink start -x -u $udp_offboard_port_local -r 4000000 -m onboard -o $udp_offbo
 
 # Increase streaming frequency (to increase MAVROS topic frequency for offboard control) @jmurraylouw
 mavlink stream -r 50 -s LOCAL_POSITION_NED -u $udp_offboard_port_local
+mavlink stream -r 50 -s POSITION_TARGET_LOCAL_NED -u $udp_offboard_port_local
 
 # Onboard link to camera
 mavlink start -x -u $udp_onboard_payload_port_local -r 4000 -f -m onboard -o $udp_onboard_payload_port_remote
