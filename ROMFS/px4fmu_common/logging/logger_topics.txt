@@ -1,0 +1,2 @@
+vehicle_local_position_setpoint 50
+vehicle_local_position 50
