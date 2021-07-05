@@ -115,6 +115,8 @@ MIS_TAKEOFF_ALT set 1.0
 param set RTL_DESCEND_ALT 10.0
 param set RTL_RETURN_ALT 10.0
 
+param set MPC_JERK_AUTO 8.0
+
 set MIXER quad_x
 
 set PWM_OUT 1234

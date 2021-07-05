@@ -1,2 +1,0 @@
-vehicle_local_position_setpoint
-vehicle_local_position
