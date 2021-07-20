@@ -17,7 +17,7 @@ param set MIS_TAKEOFF_ALT 2.5
 param set IMU_GYRO_CUTOFF 30.0
 param set IMU_DGYRO_CUTOFF 0.0
 
-param set MC_ROLL_P 2.2
+param set MC_ROLL_P 10
 param set MC_ROLLRATE_P 0.06
 param set MC_ROLLRATE_I 0.2
 param set MC_ROLLRATE_D 0.0017
@@ -25,7 +25,7 @@ param set MC_ROLLRATE_FF 0.0
 param set MC_ROLLRATE_MAX 220.0
 param set MC_ACRO_R_MAX 220.0
 
-param set MC_PITCH_P 2.2
+param set MC_PITCH_P 10
 param set MC_PITCHRATE_P 0.06
 param set MC_PITCHRATE_I 0.2
 param set MC_PITCHRATE_D 0.0017
@@ -68,9 +68,9 @@ param set MPC_XY_P 0.95
 # param set MPC_XY_VEL_D_ACC 0.3633
 
 # old*g/0.2568
-# param set MPC_XY_VEL_P_ACC 3.4369
-# param set MPC_XY_VEL_I_ACC 0.7638
-# param set MPC_XY_VEL_D_ACC 0.3819
+param set MPC_XY_VEL_P_ACC 3.4369
+param set MPC_XY_VEL_I_ACC 0.7638
+param set MPC_XY_VEL_D_ACC 0.3819
 
 # old*g/hover_init = old*g/0.2363
 param set MPC_XY_VEL_P_ACC 3.7351
@@ -115,7 +115,7 @@ MIS_TAKEOFF_ALT set 1.0
 param set RTL_DESCEND_ALT 10.0
 param set RTL_RETURN_ALT 10.0
 
-param set MPC_JERK_AUTO 8.0
+param set MPC_JERK_AUTO 6.0
 
 set MIXER quad_x
 
