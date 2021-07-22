@@ -115,3 +115,6 @@ dataman
 eeprom/
 # random comment to add changes and continue with rebase
 # another rebase comment
+
+# MATLAB cashe
+*.matlab_cache*
