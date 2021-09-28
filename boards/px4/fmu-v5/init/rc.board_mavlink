@@ -5,3 +5,11 @@
 
 # Start MAVLink on the USB port
 mavlink start -d /dev/ttyACM0
+
+# Start MAVLink on TELEM1 port, connected to companion computer
+mavlink start -d /dev/ttyS1 -b 921600
+
+# Increase MAVLINK streaming frequency for companion computer @jmurraylouw
+mavlink stream -d /dev/ttyS1 -s LOCAL_POSITION_NED -r 100
+mavlink stream -d /dev/ttyS1 -s POSITION_TARGET_LOCAL_NED -r 100 # Max is set at 50Hz though because of controller rate
+
