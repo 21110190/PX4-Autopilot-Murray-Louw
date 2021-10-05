@@ -1601,7 +1601,7 @@ Mavlink::configure_streams_to_default(const char *configure_single_stream)
 		configure_stream_local("LOCAL_POSITION_NED", 1.0f);
 		configure_stream_local("NAMED_VALUE_FLOAT", 1.0f);
 		configure_stream_local("NAV_CONTROLLER_OUTPUT", 1.0f);
-		configure_stream_local("OPTICAL_FLOW_RAD", 1.0f); // @jmurraylouw
+		configure_stream_local("OPTICAL_FLOW_RAD", 1.0f); // @jmurraylouw and changed rates elsewhere to match LOCAL_POSITION_NED
 		configure_stream_local("OBSTACLE_DISTANCE", 1.0f);
 		configure_stream_local("ORBIT_EXECUTION_STATUS", 2.0f);
 		configure_stream_local("PING", 0.1f);
