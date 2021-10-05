@@ -261,7 +261,7 @@ void BlockLocalPositionEstimator::Run()
 		}
 	}
 
-	_flowUpdated = (_param_lpe_fusion.get() & FUSE_FLOW) && _sub_flow.update();
+	// _flowUpdated = (_param_lpe_fusion.get() & FUSE_FLOW) && _sub_flow.update(); // @jmurraylouw Ignore optical flow because used for payload angle
 	_gpsUpdated = (_param_lpe_fusion.get() & FUSE_GPS) && _sub_gps.update();
 	_visionUpdated = (_param_lpe_fusion.get() & FUSE_VIS_POS) && _sub_visual_odom.update();
 	_mocapUpdated = _sub_mocap_odom.update();

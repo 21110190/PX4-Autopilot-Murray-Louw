@@ -1044,37 +1044,39 @@ void Ekf2::Run()
 			}
 		}
 
-		if (_optical_flow_sub.updated()) {
-			optical_flow_s optical_flow;
+		// @jmurraylouw
+		// Do not merge optical flow into EKF, because used to transport payload angle messages
+		// if (_optical_flow_sub.updated()) {
+		// 	optical_flow_s optical_flow;
 
-			if (_optical_flow_sub.copy(&optical_flow)) {
-				flowSample flow {};
-				// NOTE: the EKF uses the reverse sign convention to the flow sensor. EKF assumes positive LOS rate
-				// is produced by a RH rotation of the image about the sensor axis.
-				flow.flow_xy_rad(0) = -optical_flow.pixel_flow_x_integral;
-				flow.flow_xy_rad(1) = -optical_flow.pixel_flow_y_integral;
-				flow.gyro_xyz(0) = -optical_flow.gyro_x_rate_integral;
-				flow.gyro_xyz(1) = -optical_flow.gyro_y_rate_integral;
-				flow.gyro_xyz(2) = -optical_flow.gyro_z_rate_integral;
-				flow.quality = optical_flow.quality;
-				flow.dt = 1e-6f * (float)optical_flow.integration_timespan;
-				flow.time_us = optical_flow.timestamp;
+		// 	if (_optical_flow_sub.copy(&optical_flow)) {
+		// 		flowSample flow {};
+		// 		// NOTE: the EKF uses the reverse sign convention to the flow sensor. EKF assumes positive LOS rate
+		// 		// is produced by a RH rotation of the image about the sensor axis.
+		// 		flow.flow_xy_rad(0) = -optical_flow.pixel_flow_x_integral;
+		// 		flow.flow_xy_rad(1) = -optical_flow.pixel_flow_y_integral;
+		// 		flow.gyro_xyz(0) = -optical_flow.gyro_x_rate_integral;
+		// 		flow.gyro_xyz(1) = -optical_flow.gyro_y_rate_integral;
+		// 		flow.gyro_xyz(2) = -optical_flow.gyro_z_rate_integral;
+		// 		flow.quality = optical_flow.quality;
+		// 		flow.dt = 1e-6f * (float)optical_flow.integration_timespan;
+		// 		flow.time_us = optical_flow.timestamp;
 
-				if (PX4_ISFINITE(optical_flow.pixel_flow_y_integral) &&
-				    PX4_ISFINITE(optical_flow.pixel_flow_x_integral) &&
-				    flow.dt < 1) {
+		// 		if (PX4_ISFINITE(optical_flow.pixel_flow_y_integral) &&
+		// 		    PX4_ISFINITE(optical_flow.pixel_flow_x_integral) &&
+		// 		    flow.dt < 1) {
 
-					_ekf.setOpticalFlowData(flow);
-				}
+		// 			_ekf.setOpticalFlowData(flow);
+		// 		}
 
-				// Save sensor limits reported by the optical flow sensor
-				_ekf.set_optical_flow_limits(optical_flow.max_flow_rate, optical_flow.min_ground_distance,
-							     optical_flow.max_ground_distance);
+		// 		// Save sensor limits reported by the optical flow sensor
+		// 		_ekf.set_optical_flow_limits(optical_flow.max_flow_rate, optical_flow.min_ground_distance,
+		// 					     optical_flow.max_ground_distance);
 
-				ekf2_timestamps.optical_flow_timestamp_rel = (int16_t)((int64_t)optical_flow.timestamp / 100 -
-						(int64_t)ekf2_timestamps.timestamp / 100);
-			}
-		}
+		// 		ekf2_timestamps.optical_flow_timestamp_rel = (int16_t)((int64_t)optical_flow.timestamp / 100 -
+		// 				(int64_t)ekf2_timestamps.timestamp / 100);
+		// 	}
+		// }
 
 		if (_range_finder_sub_index >= 0) {
 
