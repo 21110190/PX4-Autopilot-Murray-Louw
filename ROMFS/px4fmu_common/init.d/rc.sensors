@@ -108,6 +108,8 @@ then
 	qmc5883 -X start
 	rm3100 -X start
 
+	bmp388 -X start # Start external barometer on I2C port because internal baro of Pixhawk4mini is broken @jmurraylouw
+
 	# differential pressure sensors
 	if [ ${VEHICLE_TYPE} = fw -o ${VEHICLE_TYPE} = vtol ]
 	then
