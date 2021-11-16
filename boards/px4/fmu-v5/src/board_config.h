@@ -86,6 +86,10 @@
 
 /* PX4FMU GPIOs ***********************************************************************************/
 
+/* Define pins for Pixhawk4mini for GPIO. @jmurraylouw. Explained in; https://discuss.px4.io/t/pixhawk-enabling-gpio-output/2457/15?u=murray_louw*/
+#define MAIN_OUT_6            /* PD14 */ (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_50MHz|GPIO_OUTPUT_SET|GPIO_PORTD|GPIO_PIN14)
+#define MAIN_OUT_7            /* PH6  */ (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_50MHz|GPIO_OUTPUT_SET|GPIO_PORTH|GPIO_PIN6)
+
 /* LEDs are driven with push open drain to support Anode to 5V or 3.3V */
 
 #define GPIO_nLED_RED        /* PB1 */  (GPIO_OUTPUT|GPIO_OPENDRAIN|GPIO_SPEED_50MHz|GPIO_OUTPUT_SET|GPIO_PORTB|GPIO_PIN1)

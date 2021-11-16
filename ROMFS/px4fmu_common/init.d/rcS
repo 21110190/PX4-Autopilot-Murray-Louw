@@ -542,6 +542,11 @@ else
 	fi
 
 	#
+	# Start app to configure GPIO pins for payload angle measurments @jmurraylouw
+	#
+	px4_simple_app
+
+	#
 	# Start the logger.
 	#
 	sh /etc/init.d/rc.logging
